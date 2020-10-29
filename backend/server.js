@@ -3,9 +3,12 @@ const colors = require("colors");
 require("dotenv").config();
 const connectDB = require("./config/db");
 
-const app = express();
-
 connectDB();
+
+const app = express();
+app.use(express.json({ extended: false }));
+
+app.use("/api/notes", require("./routes/notesRoutes"));
 
 const PORT = process.env.PORT || 5000;
 
