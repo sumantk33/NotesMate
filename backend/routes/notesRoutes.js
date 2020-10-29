@@ -1,5 +1,4 @@
 const express = require("express");
-const { Mongoose } = require("mongoose");
 const router = express.Router();
 
 const Notes = require("../models/notes");
@@ -9,7 +8,7 @@ const Notes = require("../models/notes");
 // @access  Public
 router.get("/", async (req, res) => {
   try {
-    const notes = await Notes.find();
+    const notes = await Notes.find(req.query);
 
     res.json(notes);
   } catch (error) {
@@ -27,6 +26,19 @@ router.get("/:id", async (req, res) => {
     if (!data) {
       return res.status(404).json({ message: "Notes dosen't exist" });
     }
+
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// @desc    Get notes of a department
+// @route   GET /api/notes/department/:department
+// @access  Public
+router.get("/department/:department", async (req, res) => {
+  try {
+    const data = await Notes.find({ department: req.params.department });
 
     res.json(data);
   } catch (error) {
@@ -61,7 +73,7 @@ router.post("/", async (req, res) => {
 // @access  Private
 router.put("/:id", async (req, res) => {
   try {
-    const exists = await Notes.findById(req.params.id);
+    let exists = await Notes.findById(req.params.id);
 
     if (!exists) {
       return res.status(404).json({ message: "Notes doesn't exists" });
@@ -77,13 +89,13 @@ router.put("/:id", async (req, res) => {
     if (subject) updatedNotes.subject = subject;
     if (link) updatedNotes.link = link;
 
-    const data = await Notes.findByIdAndUpdate(
+    exists = await Notes.findByIdAndUpdate(
       req.params.id,
       { $set: updatedNotes },
-      { $new: true }
+      { new: true }
     );
 
-    res.status(201).json(data);
+    res.status(201).json(exists);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
