@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "server": "nodemon backend/server.js",
-    "client": "npm start --prefix frontend"
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Sumant Katti",
   "license": "MIT",
@@ -13,9 +14,11 @@
     "nodemon": "^2.0.6"
   },
   "dependencies": {
+    "axios": "^0.21.0",
     "colors": "^1.4.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "font-awesome": "^4.7.0",
     "mongoose": "^5.10.11",
     "react-router-dom": "^5.2.0"
   }

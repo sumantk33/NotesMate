@@ -9,6 +9,7 @@ const app = express();
 app.use(express.json({ extended: false }));
 
 app.use("/api/notes", require("./routes/notesRoutes"));
+app.use("/api/branches", require("./routes/branchRoutes"));
 
 const PORT = process.env.PORT || 5000;
 
