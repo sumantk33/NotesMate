@@ -146,4 +146,9 @@
 
 .footer {
   height: 10vh;
+  clear: both;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
 }

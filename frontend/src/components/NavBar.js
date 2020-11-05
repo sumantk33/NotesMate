@@ -1,5 +1,4 @@
 import React from "react";
-import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
 import header from "../assets/header.svg";
 import { Navbar, Nav } from "react-bootstrap";
@@ -26,9 +25,6 @@ const NavBar = () => {
           <Nav.Link href='/'>
             <span className='nav_items'>Upload Notes</span>
           </Nav.Link>
-          {/* <Nav.Link href='/'>
-            <button>Contact</button>
-          </Nav.Link> */}
         </Nav>
       </Navbar.Collapse>
     </Navbar>

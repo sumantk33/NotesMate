@@ -12,7 +12,6 @@ const Branches = () => {
     setLoading(true);
     const { data } = await axios.get("/api/branches");
     setBranchs(data);
-    console.log(data);
   };
 
   useEffect(() => {
