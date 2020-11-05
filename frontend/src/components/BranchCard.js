@@ -1,11 +1,11 @@
 import React from "react";
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
+import "./BranchCard.scss";
 import { Link } from "react-router-dom";
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 
 const BranchCard = ({ branch }) => {
-  var image = branch.image;
   return (
     <Card className='branchCard my-4 rounded'>
       <Card.Img variant='top' className='cardImg my-1' src={branch.image} />

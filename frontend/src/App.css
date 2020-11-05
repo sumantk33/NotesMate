@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap");
 
 .hero {
   background: url(assets/3571325.jpg) no-repeat center center fixed;
@@ -13,43 +14,44 @@
 
 .navBarHeader {
   padding: 0px 0;
-  font-family: "Poppins", sans-serif;
-  background-color: whitesmoke;
+  font-family: "Fira Sans", sans-serif;
   width: 100%;
   margin: auto;
+  background: transparent;
 }
 
 .nav_links {
   margin-right: 25vh;
 }
 
+.nav_items {
+  color: black;
+  margin-right: 3vh;
+  font-size: 2vh;
+}
+
+.nav_items:hover {
+  color: #0620ff;
+}
+
 .navBarHeader img {
-  height: 5vh;
-  width: 6vh;
-  margin-left: 25vh;
+  height: 6vh;
+  width: 30vh;
+  margin-left: 30vh;
   border-radius: 6px;
+  cursor: pointer;
 }
 
-.navBarHeader h2 {
-  color: #0b383d;
-
-  font-size: 40px;
-}
-
-.nav_links h6 {
-  color: #ffffff;
-  margin: 0 10px;
-  font-size: large;
-}
-
-.button {
-  background-color: #e65959;
+.navBarHeader button {
+  background-color: #f06868;
   border-radius: 5px;
   margin-right: 12px;
   border: none;
+  padding: 5px 10px;
+  color: #ffffff;
 }
 
-.button:hover {
+.navBarHeader button:hover {
   background-color: #ff939c;
 }
 
@@ -92,19 +94,22 @@
   margin-top: 2vh;
   border: 2px solid #0620ff;
   color: #0620ff;
-  transition: all 0.4s ease 0s;
+  transition: all 0.5s ease 0s;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
 }
 
 .learnMore:hover {
   color: #ffffff;
   background-color: #0620ff;
   border: 2px solid #0620ff;
-  transform: translateY(-5px);
+  transform: translateY(-3px);
 }
 
 .branches {
   padding-top: 7vh;
-  height: 80vh;
   text-align: center;
 }
 
@@ -137,4 +142,8 @@
 
 .branchCard h6 {
   font-family: "Poppins", sans-serif;
+}
+
+.footer {
+  height: 10vh;
 }

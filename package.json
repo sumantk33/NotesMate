@@ -11,7 +11,8 @@
   "author": "Sumant Katti",
   "license": "MIT",
   "devDependencies": {
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.6",
+    "sass": "^1.29.0"
   },
   "dependencies": {
     "axios": "^0.21.0",
