@@ -1,4 +1,6 @@
 import React from "react";
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
 import { Link } from "react-router-dom";
 import { Card, Button } from "react-bootstrap";
 
@@ -15,7 +17,9 @@ const BranchCard = ({ branch }) => {
         <Card.Text>
           <h6>{branch.description}</h6>
         </Card.Text>
-        <Button variant='primary'>Go somewhere</Button>
+        <AwesomeButton type='primary' size='medium'>
+          Go
+        </AwesomeButton>
       </Card.Body>
     </Card>
   );
