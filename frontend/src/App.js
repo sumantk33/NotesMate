@@ -1,13 +1,17 @@
 import "./App.css";
-import { BrowserRouter as Router, Link } from "react-router-dom";
-import { Container } from "react-bootstrap";
+import { BrowserRouter as Router } from "react-router-dom";
 import NavBar from "./components/NavBar";
+import Hero from "./components/Hero";
+import Desc from "./components/Description";
 
 const App = () => {
   return (
     <Router>
       <NavBar />
-      <Container></Container>
+      <div className='upper'>
+        <Hero />
+      </div>
+      <Desc />
     </Router>
   );
 };
