@@ -1,34 +1,34 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Row, Col, Container } from "react-bootstrap";
 import BranchCard from "./BranchCard";
 import Loader from "./Loader";
+import { listBranches } from "../actions/branchActions";
 
 const Branches = () => {
-  const [branchs, setBranchs] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
-  const getBranches = async () => {
-    setLoading(true);
-    const { data } = await axios.get("/api/branches");
-    setBranchs(data);
-  };
+  const branchList = useSelector((state) => state.branchList);
+  const { branches, loading } = branchList;
 
   useEffect(() => {
-    getBranches();
-    setLoading(false);
-  }, []);
+    dispatch(listBranches());
+  }, [dispatch]);
 
   return (
     <div className='branches'>
       <h1>Academics</h1>
       <Container>
         <Row>
-          {branchs.map((branch) => (
-            <Col key={branch._id} sm={12} md={6} lg={4} xl={4}>
-              <BranchCard branch={branch} />
-            </Col>
-          ))}
+          {loading ? (
+            <Loader />
+          ) : (
+            branches.map((branch) => (
+              <Col key={branch._id} sm={12} md={6} lg={4} xl={4}>
+                <BranchCard branch={branch} />
+              </Col>
+            ))
+          )}
         </Row>
       </Container>
     </div>

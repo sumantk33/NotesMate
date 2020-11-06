@@ -20,14 +20,10 @@
   background: transparent;
 }
 
-.nav_links {
-  margin-right: 25vh;
-}
-
 .nav_items {
   color: black;
   margin-right: 3vh;
-  font-size: 2vh;
+  font-size: 1.1rem;
 }
 
 .nav_items:hover {
@@ -37,7 +33,7 @@
 .navBarHeader img {
   height: 6vh;
   width: 30vh;
-  margin-left: 30vh;
+  margin-left: 10vh;
   border-radius: 6px;
   cursor: pointer;
 }
@@ -67,13 +63,12 @@
 
 .waves {
   position: absolute;
-  bottom: -40px;
+  bottom: -30px;
   opacity: 1;
 }
 
 .desc {
   padding-top: 5vh;
-  height: 43vh;
   text-align: center;
 }
 
@@ -142,13 +137,4 @@
 
 .branchCard h6 {
   font-family: "Poppins", sans-serif;
-}
-
-.footer {
-  height: 10vh;
-  clear: both;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  overflow: hidden;
 }
