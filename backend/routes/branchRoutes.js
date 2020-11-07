@@ -7,7 +7,7 @@ const Branch = require("../models/branches");
 // @route   GET /api/branches
 // @access  Public
 router.get("/", async (req, res) => {
-  const branches = await Branch.find();
+  const branches = await Branch.find(req.query);
 
   res.status(200).json(branches);
 });
