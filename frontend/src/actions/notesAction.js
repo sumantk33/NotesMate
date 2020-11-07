@@ -5,12 +5,12 @@ import {
 } from "../constants/notesConstants";
 import axios from "axios";
 
-export const getNotes = (dept, sem) => async (dispatch) => {
+export const getNotes = (dept, sem, sub_code) => async (dispatch) => {
   try {
     dispatch({ type: NOTES_LIST_REQUEST });
 
     const { data } = await axios.get(
-      `/api/notes?department=${dept}&sem=${sem}`
+      `/api/notes?department=${dept}&sem=${sem}&sub_code=${sub_code}`
     );
 
     dispatch({

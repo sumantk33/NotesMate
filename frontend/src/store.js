@@ -6,11 +6,13 @@ import {
   branchListReducer,
   branchDetailsReducer,
 } from "./reducers/BranchReducers";
+import { subjectListReducer } from "./reducers/SubjectsReducer";
 import { notesListReducer } from "./reducers/NotesReducers";
 
 const reducer = combineReducers({
   branchList: branchListReducer,
   branchDetails: branchDetailsReducer,
+  subjectList: subjectListReducer,
   notesList: notesListReducer,
 });
 

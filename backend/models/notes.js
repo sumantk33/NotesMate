@@ -19,6 +19,10 @@ const NotesSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  sub_code: {
+    type: String,
+    required: true,
+  },
   link: {
     type: String,
     required: true,

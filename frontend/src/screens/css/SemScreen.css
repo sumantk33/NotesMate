@@ -11,6 +11,7 @@
   text-align: center;
   font-family: "Poppins", sans-serif;
   margin-bottom: 3vh;
+  font-size: 7vh;
 }
 
 .semester h4 {
@@ -22,9 +23,24 @@
 }
 
 .table th {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .table td {
   font-size: 1.1rem;
+}
+
+.table button {
+  border: 2px solid #0620ff;
+  color: #0620ff;
+  transition: all 0.5s ease 0s;
+  width: 7vh;
+  border-radius: 8px;
+}
+
+.table button:hover {
+  color: #ffffff;
+  background-color: #0620ff;
+  border: 2px solid #0620ff;
+  transform: translateY(-2px);
 }

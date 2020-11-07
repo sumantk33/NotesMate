@@ -33,24 +33,11 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// @desc    Get notes of a department
-// @route   GET /api/notes/department/:department
-// @access  Public
-router.get("/department/:department", async (req, res) => {
-  try {
-    const data = await Notes.find({ department: req.params.department });
-
-    res.json(data);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
 // @desc    Add notes
 // @route   POST /api/notes
 // @access  Private
 router.post("/", async (req, res) => {
-  const { department, sem, name, subject, link } = req.body;
+  const { department, sem, name, subject, link, sub_code } = req.body;
 
   try {
     const newNotes = new Notes({
@@ -59,6 +46,7 @@ router.post("/", async (req, res) => {
       name,
       subject,
       link,
+      sub_code,
     });
 
     const data = await newNotes.save();
@@ -81,13 +69,14 @@ router.put("/:id", async (req, res) => {
 
     const updatedNotes = {};
 
-    const { department, sem, name, subject, link } = req.body;
+    const { department, sem, name, subject, link, sub_code } = req.body;
 
     if (department) updatedNotes.department = department;
     if (sem) updatedNotes.sem = sem;
     if (name) updatedNotes.name = name;
     if (subject) updatedNotes.subject = subject;
     if (link) updatedNotes.link = link;
+    if (sub_code) updatedNotes.sub_code = sub_code;
 
     exists = await Notes.findByIdAndUpdate(
       req.params.id,

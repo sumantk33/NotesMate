@@ -4,17 +4,19 @@ import { Link } from "react-router-dom";
 import "react-awesome-button/dist/styles.css";
 import { Container, Table, Button } from "react-bootstrap";
 import "./css/SemScreen.css";
-import { getSubjects } from "../actions/subjectActions";
+import { getNotes } from "../actions/notesAction";
 import Loader from "../components/Loader";
 
 const SemScreen = ({ match }) => {
   const dispatch = useDispatch();
 
-  const subjectList = useSelector((state) => state.subjectList);
-  const { loading, subjects } = subjectList;
+  const notesList = useSelector((state) => state.notesList);
+  const { loading, notes } = notesList;
 
   useEffect(() => {
-    dispatch(getSubjects(match.params.dept, match.params.sem));
+    dispatch(
+      getNotes(match.params.dept, match.params.sem, match.params.sub_code)
+    );
   }, [dispatch, match]);
 
   if (loading) {
@@ -25,7 +27,8 @@ const SemScreen = ({ match }) => {
         <Container>
           <h1>Materials</h1>
           <h4>
-            {match.params.dept} Sem {match.params.sem} :-
+            {match.params.dept} Sem {match.params.sem} {match.params.sub_code}{" "}
+            :-
           </h4>
 
           <Table
@@ -37,19 +40,21 @@ const SemScreen = ({ match }) => {
           >
             <thead>
               <tr>
-                <th width={"20%"}>ID</th>
+                <th>ID</th>
+                <th>NAME</th>
                 <th>SUBJECT</th>
-                <th width={"30%"}>LINK</th>
+                <th>LINK</th>
               </tr>
             </thead>
             <tbody>
-              {subjects.map((sub, index) => (
+              {notes.map((note, index) => (
                 <tr>
                   <td>{index + 1}</td>
-                  <td>{sub.subject}</td>
+                  <td>{note.name}</td>
+                  <td>{note.sub_code}</td>
                   <td>
                     <Link
-                      to={`/${match.params.dept}/${match.params.sem}/${sub.sub_code}`}
+                      to={`/${match.params.dept}/${match.params.sem}/${note.sub_code}`}
                     >
                       <button>
                         <i className='fa fa-arrow-right' aria-hidden='true'></i>
