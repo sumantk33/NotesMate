@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./css/ContactScreen.css";
-import { Container, Form, Button } from "react-bootstrap";
+import "./css/UploadNotesScreen.css";
+import { Container, Form, Button, Toast } from "react-bootstrap";
+import Message from "../components/Message";
 
 const ContactScreen = () => {
   const [name, setName] = useState("");
@@ -10,52 +12,71 @@ const ContactScreen = () => {
   const [subject, setSubject] = useState("");
   const [sub_code, setSub_code] = useState("");
   const [link, setLink] = useState("");
+  const [show, setShow] = useState(false);
+  const [variant, setVariant] = useState("");
+  const [message, setMessage] = useState("");
 
   const submitHandler = async () => {
-    if (
-      !name ||
-      !department ||
-      !sem ||
-      !subject ||
-      !sub_code ||
-      !link ||
-      department === "LOL"
-    ) {
+    if (!name || !department || !sem || !subject || !sub_code || !link) {
       alert("Please fill in all the details");
+    } else {
+      const data = {
+        name,
+        department,
+        sem,
+        subject,
+        sub_code,
+        link,
+      };
+
+      const config = {
+        "Content-Type": "application/json",
+      };
+
+      const url = "http://localhost:5000/api/upload/add";
+
+      try {
+        const { status } = await axios.post(url, data, config);
+
+        if (status === 201) {
+          setVariant("success");
+          setMessage(
+            "Your notes were successfully uploaded and will be reviewed"
+          );
+        } else {
+          setVariant("danger");
+          setMessage(
+            "Oops!!! There was some error. Pleaswe refresh the page and try again"
+          );
+        }
+        setShow(true);
+      } catch (error) {}
+
+      setName("");
+      setDepartment("");
+      setSem(1);
+      setSubject("");
+      setSub_code("");
+      setLink("");
     }
-
-    const data = {
-      name,
-      department,
-      sem,
-      subject,
-      sub_code,
-      link,
-    };
-
-    console.log(data);
-
-    const config = {
-      "Content-Type": "application/json",
-    };
-
-    const url = "http://localhost:5000/api/upload/add";
-
-    const result = await axios.post(url, data, config);
-
-    console.log(result);
-
-    setName("");
-    setDepartment("");
-    setSem(1);
-    setSubject("");
-    setSub_code("");
-    setLink("");
   };
 
   return (
     <div className='contact'>
-      {/* <img src={Reading} alt='Reading' className='reading' /> */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          right: 0,
+        }}
+      >
+        <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
+          <Toast.Header>
+            <Message variant={variant}>{message}</Message>
+          </Toast.Header>
+        </Toast>
+      </div>
+
       <Container>
         <h1>Send us your notes</h1>
         <Form>
@@ -157,10 +178,10 @@ const ContactScreen = () => {
           <div className='text-center'>
             <Button
               variant='outline-primary'
-              className='askQuestion'
+              className='upload'
               onClick={submitHandler}
             >
-              <span style={{ fontSize: "20px" }}>Send </span>
+              <span style={{ fontSize: "20px" }}>Upload </span>
               <i className='fa fa-long-arrow-right' aria-hidden='true'></i>
             </Button>
           </div>

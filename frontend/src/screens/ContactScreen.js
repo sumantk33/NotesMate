@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./css/ContactScreen.css";
-import { Container, Form, Button } from "react-bootstrap";
+import { Container, Form, Button, Toast } from "react-bootstrap";
+import Message from "../components/Message";
 
 const ContactScreen = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [email_id, setEmail_id] = useState("");
+  const [show, setShow] = useState(false);
+  const [variant, setVariant] = useState("");
+  const [message, setMessage] = useState("");
 
   const getDate = () => {
     const today = new Date();
@@ -17,28 +21,65 @@ const ContactScreen = () => {
   };
 
   const submitHandler = async () => {
-    const newIssue = {
-      name,
-      description,
-      email_id,
-      date: getDate(),
-    };
+    if (!name || !description || !email_id) {
+      alert("Please enter all the details");
+    } else {
+      const newIssue = {
+        name,
+        description,
+        email_id,
+        date: getDate(),
+      };
 
-    const config = {
-      "Content-Type": "application/json",
-    };
+      const config = {
+        "Content-Type": "application/json",
+      };
 
-    await axios.post("/api/issues", newIssue, config);
+      try {
+        const { status } = await axios.post("/api/issues", newIssue, config);
 
-    setName("");
-    setDescription("");
-    setEmail_id("");
+        if (status === 200) {
+          setVariant("success");
+          setMessage("Your issue was successfully recorded");
+        } else {
+          setVariant("danger");
+          setMessage(
+            "Oops!!! There was some error. Pleaswe refresh the page and try again"
+          );
+        }
+        setShow(true);
+      } catch (error) {}
+
+      setName("");
+      setDescription("");
+      setEmail_id("");
+    }
   };
 
   return (
     <div className='contact'>
       <Container>
-        <h1>Ask a question</h1>
+        <h1>Got any question?</h1>
+
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            right: 0,
+          }}
+        >
+          <Toast
+            onClose={() => setShow(false)}
+            show={show}
+            delay={3000}
+            autohide
+          >
+            <Toast.Header>
+              <Message variant={variant}>{message}</Message>
+            </Toast.Header>
+          </Toast>
+        </div>
+
         <Form>
           <Form.Group controlId='name'>
             <Form.Label>
@@ -54,7 +95,7 @@ const ContactScreen = () => {
 
           <Form.Group controlId='exampleForm.ControlTextarea1'>
             <Form.Label>
-              <h5>Explain your issue:-</h5>
+              <h5>What's your issue:-</h5>
             </Form.Label>
             <Form.Control
               as='textarea'
@@ -83,7 +124,7 @@ const ContactScreen = () => {
               className='askQuestion'
               onClick={submitHandler}
             >
-              <span style={{ fontSize: "20px" }}>Send </span>
+              <span style={{ fontSize: "20px" }}>Ask </span>
               <i className='fa fa-long-arrow-right' aria-hidden='true'></i>
             </Button>
           </div>

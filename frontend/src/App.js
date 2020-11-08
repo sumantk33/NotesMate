@@ -9,7 +9,6 @@ import SubjectScreen from "./screens/SubjectScreen";
 import AboutScreen from "./screens/AboutScreen";
 import ContactScreen from "./screens/ContactScreen";
 import UploadScreen from "./screens/UploadNotes";
-import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -26,7 +25,6 @@ const App = () => {
         path='/branch/:dept/:sem/:sub_code'
         component={SubjectScreen}
       />
-      <Footer />
     </Router>
   );
 };
