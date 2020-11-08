@@ -5,6 +5,8 @@ import "./css/BranchScreen.css";
 import SemList from "../components/SemList";
 import Loader from "../components/Loader";
 import { getCurrent } from "../actions/branchActions";
+import Reading from "../assets/reading.svg";
+import Rocket from "../assets/rocket.svg";
 
 const BranchScreen = ({ match }) => {
   const dispatch = useDispatch();
@@ -24,8 +26,11 @@ const BranchScreen = ({ match }) => {
   } else {
     return (
       <div className='branch'>
+        <img src={Reading} alt='Reading' className='reading' />
+        <img src={Rocket} alt='Rocket' className='rocket' />
         <Container>
           <h1>{currBranch.description}</h1>
+
           <Row>
             {sems.map((sem) => (
               <Col key={branch._id} sm={12} md={6} lg={4} xl={3}>

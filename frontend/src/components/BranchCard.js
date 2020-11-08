@@ -17,7 +17,7 @@ const BranchCard = ({ branch }) => {
         <Card.Text>
           <h6>{branch.description}</h6>
         </Card.Text>
-        <Link to={`/${branch.code}`}>
+        <Link to={`/branch/${branch.code}`}>
           <AwesomeButton type='primary' size='medium'>
             Go
           </AwesomeButton>

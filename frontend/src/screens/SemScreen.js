@@ -6,6 +6,7 @@ import { Container, Table, Button } from "react-bootstrap";
 import "./css/SemScreen.css";
 import { getSubjects } from "../actions/subjectActions";
 import Loader from "../components/Loader";
+import Reading from "../assets/reading.svg";
 
 const SemScreen = ({ match }) => {
   const dispatch = useDispatch();
@@ -22,8 +23,10 @@ const SemScreen = ({ match }) => {
   } else {
     return (
       <div className='semester'>
+        <img src={Reading} alt='Reading' className='reading' />
+
         <Container>
-          <h1>Materials</h1>
+          <h1>Subjects</h1>
           <h4>
             {match.params.dept} Sem {match.params.sem} :-
           </h4>
@@ -48,9 +51,7 @@ const SemScreen = ({ match }) => {
                   <td>{index + 1}</td>
                   <td>{sub.subject}</td>
                   <td>
-                    <Link
-                      to={`/${match.params.dept}/${match.params.sem}/${sub.sub_code}`}
-                    >
+                    <Link to={`${sub.sem}/${sub.sub_code}`}>
                       <button>
                         <i className='fa fa-arrow-right' aria-hidden='true'></i>
                       </button>

@@ -18,6 +18,7 @@
   width: 100%;
   margin: auto;
   background: transparent;
+  height: 7vh;
 }
 
 .nav_items {
@@ -137,4 +138,43 @@
 
 .branchCard h6 {
   font-family: "Poppins", sans-serif;
+}
+
+.reading {
+  width: 45vh;
+  position: absolute;
+  left: 60%;
+  top: 60%;
+  transform: translate(60%, 0%);
+  z-index: -1;
+}
+
+.rocket {
+  position: absolute;
+  left: 3%;
+  top: 30%;
+  width: 55vh;
+  border-radius: 20px;
+  z-index: -1;
+  opacity: 0.9;
+}
+
+@media screen and (max-width: 1400px) {
+  .rocket {
+    opacity: 0.7;
+  }
+
+  .reading {
+    opacity: 0.7;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .rocket {
+    opacity: 0;
+  }
+
+  .reading {
+    opacity: 0;
+  }
 }

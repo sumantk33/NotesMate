@@ -16,6 +16,27 @@ router.get("/", async (req, res) => {
   }
 });
 
+// @desc    Get specific subjects
+// @route   GET /api/notes/subjects
+// @access  Public
+router.get("/subjects", async (req, res) => {
+  try {
+    const notes = await Notes.find(req.query).select("sub_code subject sem");
+
+    result = notes.filter(function (a) {
+      var key = a.subject + "|" + a.sub_code + "|" + a.sem;
+      if (!this[key]) {
+        this[key] = true;
+        return true;
+      }
+    }, Object.create(null));
+
+    res.json(result);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+});
+
 // @desc    Get Notes by Id
 // @route   GET /api/notes/:id
 // @access  Public

@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "react-awesome-button/dist/styles.css";
 import { Container, Table, Button } from "react-bootstrap";
-import "./css/SemScreen.css";
+import "./css/SubjectScreen.css";
 import { getNotes } from "../actions/notesAction";
 import Loader from "../components/Loader";
+import Reading from "../assets/reading.svg";
 
 const SemScreen = ({ match }) => {
   const dispatch = useDispatch();
@@ -24,8 +25,10 @@ const SemScreen = ({ match }) => {
   } else {
     return (
       <div className='semester'>
+        <img src={Reading} alt='Reading' className='reading' />
+
         <Container>
-          <h1>Materials</h1>
+          <h1>Notes</h1>
           <h4>
             {match.params.dept} Sem {match.params.sem} {match.params.sub_code}{" "}
             :-
@@ -53,13 +56,16 @@ const SemScreen = ({ match }) => {
                   <td>{note.name}</td>
                   <td>{note.sub_code}</td>
                   <td>
-                    <Link
-                      to={`/${match.params.dept}/${match.params.sem}/${note.sub_code}`}
+                    <a
+                      // style={{ display: "table-cell" }}
+                      href={note.link}
+                      target='_blank'
+                      rel='noopener noreferrer'
                     >
                       <button>
                         <i className='fa fa-arrow-right' aria-hidden='true'></i>
                       </button>
-                    </Link>
+                    </a>
                   </td>
                 </tr>
               ))}

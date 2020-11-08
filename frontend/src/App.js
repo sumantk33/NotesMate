@@ -6,6 +6,9 @@ import LandingScreen from "./screens/LandingScreen";
 import BranchScreen from "./screens/BranchScreen";
 import SemScreen from "./screens/SemScreen";
 import SubjectScreen from "./screens/SubjectScreen";
+import AboutScreen from "./screens/AboutScreen";
+import ContactScreen from "./screens/ContactScreen";
+import UploadScreen from "./screens/UploadNotes";
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -13,9 +16,16 @@ const App = () => {
     <Router>
       <NavBar />
       <Route exact path='/' component={LandingScreen} />
-      <Route exact path='/:dept' component={BranchScreen} />
-      <Route exact path='/:dept/:sem' component={SemScreen} />
-      <Route exact path='/:dept/:sem/:sub_code' component={SubjectScreen} />
+      <Route exact path='/about' component={AboutScreen} />
+      <Route exact path='/contact' component={ContactScreen} />
+      <Route exact path='/upload' component={UploadScreen} />
+      <Route exact path='/branch/:dept' component={BranchScreen} />
+      <Route exact path='/branch/:dept/:sem' component={SemScreen} />
+      <Route
+        exact
+        path='/branch/:dept/:sem/:sub_code'
+        component={SubjectScreen}
+      />
       <Footer />
     </Router>
   );

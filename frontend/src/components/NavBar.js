@@ -1,5 +1,4 @@
 import React from "react";
-import "react-awesome-button/dist/styles.css";
 import header from "../assets/header.svg";
 import { Navbar, Nav } from "react-bootstrap";
 
@@ -16,13 +15,13 @@ const NavBar = () => {
           <Nav.Link href='/'>
             <span className='nav_items'>Home</span>
           </Nav.Link>
-          <Nav.Link href='/'>
+          <Nav.Link href='/about'>
             <span className='nav_items'>About</span>
           </Nav.Link>
-          <Nav.Link href='/'>
+          <Nav.Link href='/contact'>
             <span className='nav_items'>Contact</span>
           </Nav.Link>
-          <Nav.Link href='/'>
+          <Nav.Link href='/upload'>
             <span className='nav_items'>Upload Notes</span>
           </Nav.Link>
         </Nav>

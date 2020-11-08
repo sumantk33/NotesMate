@@ -2,13 +2,15 @@
 
 .branch {
   margin-bottom: 10px;
-  min-height: 75vh;
+  min-height: 79vh;
   font-family: "Poppins", sans-serif;
-  margin-top: 4vh;
+  padding-top: 5vh;
 }
 
 .branch h1 {
   text-align: center;
+  margin-bottom: 5vh;
+  color: #5952c0;
 }
 
 .semBranchCard {

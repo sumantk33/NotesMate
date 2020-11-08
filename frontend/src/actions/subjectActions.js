@@ -10,7 +10,7 @@ export const getSubjects = (dept, sem) => async (dispatch) => {
     dispatch({ type: SUBJECT_LIST_REQUEST });
 
     const { data } = await axios.get(
-      `/api/notes?department=${dept}&sem=${sem}`
+      `/api/notes/subjects?department=${dept}&sem=${sem}`
     );
 
     dispatch({
