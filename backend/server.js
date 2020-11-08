@@ -10,6 +10,7 @@ app.use(express.json({ extended: false }));
 
 app.use("/api/notes", require("./routes/notesRoutes"));
 app.use("/api/branches", require("./routes/branchRoutes"));
+app.use("/api/upload", require("./routes/uploadNotesRoutes"));
 
 const PORT = process.env.PORT || 5000;
 
