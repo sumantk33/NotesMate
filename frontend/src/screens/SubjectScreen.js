@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import "react-awesome-button/dist/styles.css";
-import { Container, Table, Button } from "react-bootstrap";
+import { Container, Table } from "react-bootstrap";
 import "./css/SubjectScreen.css";
 import { getNotes } from "../actions/notesAction";
 import Loader from "../components/Loader";

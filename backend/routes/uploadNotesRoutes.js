@@ -20,16 +20,16 @@ router.get("/", async (req, res) => {
 // @desc    Upload notes
 // @route   POST /api/upload
 // @access  Public
-router.post("/", async (req, res) => {
-  const { department, sem, name, subject, sub_code, link } = req.body;
+router.post("/add", async (req, res) => {
+  const { department, sem, name, subject, link, sub_code } = req.body;
   try {
     const newNotes = new Upload({
       department,
       sem,
       name,
       subject,
-      sub_code,
       link,
+      sub_code,
     });
 
     const data = await newNotes.save();

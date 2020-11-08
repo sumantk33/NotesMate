@@ -14,9 +14,10 @@ const BranchCard = ({ branch }) => {
         <Card.Title>
           <h3>{branch.name}</h3>
         </Card.Title>
-        <Card.Text>
-          <h6>{branch.description}</h6>
-        </Card.Text>
+
+        <h6>
+          <Card.Text>{branch.description}</Card.Text>
+        </h6>
         <Link to={`/branch/${branch.code}`}>
           <AwesomeButton type='primary' size='medium'>
             Go

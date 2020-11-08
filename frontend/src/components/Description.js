@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 const Description = () => {
@@ -11,10 +12,12 @@ const Description = () => {
         solved
         <br /> by the students of your college community(Coming soon).
       </h5>
-      <Button variant='outline-primary' size='lg' className='learnMore'>
-        <span style={{ fontSize: "20px" }}>Learn More </span>
-        <i className='fa fa-long-arrow-right' aria-hidden='true'></i>
-      </Button>
+      <Link to='/about'>
+        <Button variant='outline-primary' size='lg' className='learnMore'>
+          <span style={{ fontSize: "20px" }}>Learn More </span>
+          <i className='fa fa-long-arrow-right' aria-hidden='true'></i>
+        </Button>
+      </Link>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import React from "react";
 import "./css/AboutScreen.css";
 import { Container } from "react-bootstrap";
-import Reading from "../assets/reading.svg";
 
 const AboutScreen = () => {
   return (
