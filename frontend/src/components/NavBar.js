@@ -21,6 +21,9 @@ const NavBar = () => {
           <Nav.Link href='/contact'>
             <span className='nav_items'>Contact</span>
           </Nav.Link>
+          <Nav.Link href='/discuss'>
+            <span className='nav_items'>Discuss</span>
+          </Nav.Link>
           <Nav.Link href='/upload'>
             <span className='nav_items'>Upload Notes</span>
           </Nav.Link>

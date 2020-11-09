@@ -8,7 +8,7 @@ import {
 } from "../constants/branchConstants";
 
 export const branchListReducer = (
-  state = { branches: [], currBranch: {} },
+  state = { branches: [] },
   action
 ) => {
   switch (action.type) {

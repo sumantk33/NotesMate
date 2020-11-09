@@ -7,7 +7,7 @@ import Message from "../components/Message";
 
 const ContactScreen = () => {
   const [name, setName] = useState("");
-  const [department, setDepartment] = useState("CSE");
+  const [department, setDepartment] = useState("");
   const [sem, setSem] = useState(1);
   const [subject, setSubject] = useState("");
   const [sub_code, setSub_code] = useState("");
@@ -101,6 +101,7 @@ const ContactScreen = () => {
               value={department}
               onChange={(e) => setDepartment(e.target.value)}
             >
+              <option value={"lol"}>---SELECT---</option>
               <option value={"CSE"}>Computer Science and Engineering</option>
               <option value={"ISE"}>Information Science and Engineering</option>
               <option value={"ECE"}>

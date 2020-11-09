@@ -5,7 +5,6 @@ import { Container } from "react-bootstrap";
 const AboutScreen = () => {
   return (
     <div className='about text-center'>
-      {/* <img src={Reading} alt='Reading' className='reading' /> */}
       <Container>
         <h1>About NotesMate</h1>
         <h5>

@@ -8,12 +8,14 @@ import {
 } from "./reducers/BranchReducers";
 import { subjectListReducer } from "./reducers/SubjectsReducer";
 import { notesListReducer } from "./reducers/NotesReducers";
+import { postListReducer } from "./reducers/DiscussReducers";
 
 const reducer = combineReducers({
   branchList: branchListReducer,
   branchDetails: branchDetailsReducer,
   subjectList: subjectListReducer,
   notesList: notesListReducer,
+  postList: postListReducer,
 });
 
 const initialState = {};
