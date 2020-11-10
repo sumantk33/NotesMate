@@ -9,6 +9,7 @@ import {
 import { subjectListReducer } from "./reducers/SubjectsReducer";
 import { notesListReducer } from "./reducers/NotesReducers";
 import { postListReducer } from "./reducers/DiscussReducers";
+import { userLoginReducer } from "./reducers/userReducers";
 
 const reducer = combineReducers({
   branchList: branchListReducer,
@@ -16,9 +17,16 @@ const reducer = combineReducers({
   subjectList: subjectListReducer,
   notesList: notesListReducer,
   postList: postListReducer,
+  userLogin: userLoginReducer,
 });
 
-const initialState = {};
+const userInfoFromStorage = localStorage.getItem("userInfo")
+  ? JSON.parse(localStorage.getItem("userInfo"))
+  : null;
+
+const initialState = {
+  userLogin: { userInfo: userInfoFromStorage },
+};
 
 const middleware = [thunk];
 

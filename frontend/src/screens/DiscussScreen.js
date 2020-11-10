@@ -6,7 +6,6 @@ import Post from "../components/Post";
 import Loader from "../components/Loader";
 import { getPosts } from "../actions/discussActions";
 import Reading from "../assets/reading.svg";
-import Rocket from "../assets/rocket.svg";
 
 const DiscussScreen = () => {
   const dispatch = useDispatch();
