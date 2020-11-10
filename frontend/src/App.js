@@ -11,6 +11,7 @@ import ContactScreen from "./screens/ContactScreen";
 import UploadScreen from "./screens/UploadNotes";
 import DiscussScreen from "./screens/DiscussScreen";
 import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
       />
       <Route exact path='/discuss' component={DiscussScreen} />
       <Route exact path='/login' component={LoginScreen} />
+      <Route exact path='/register' component={RegisterScreen} />
     </Router>
   );
 };

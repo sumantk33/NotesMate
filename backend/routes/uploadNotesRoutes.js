@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const protect = require("../middleware/authMiddleware");
+
 const Upload = require("../models/uploadNotes");
 const Notes = require("../models/notes");
 
@@ -43,7 +45,7 @@ router.post("/add", async (req, res) => {
 // @desc    Approve notes
 // @route   get /api/upload/approve/:id
 // @access  Public
-router.get("/approve/:id", async (req, res) => {
+router.get("/approve/:id", protect, async (req, res) => {
   try {
     const exists = await Upload.findById(req.params.id).select("-_id -__v");
 

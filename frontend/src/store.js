@@ -8,8 +8,8 @@ import {
 } from "./reducers/BranchReducers";
 import { subjectListReducer } from "./reducers/SubjectsReducer";
 import { notesListReducer } from "./reducers/NotesReducers";
-import { postListReducer } from "./reducers/DiscussReducers";
-import { userLoginReducer } from "./reducers/userReducers";
+import { postListReducer, postDeleteReducer } from "./reducers/DiscussReducers";
+import { userLoginReducer, userRegisterReducer } from "./reducers/userReducers";
 
 const reducer = combineReducers({
   branchList: branchListReducer,
@@ -18,6 +18,8 @@ const reducer = combineReducers({
   notesList: notesListReducer,
   postList: postListReducer,
   userLogin: userLoginReducer,
+  userRegister: userRegisterReducer,
+  postDelete: postDeleteReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

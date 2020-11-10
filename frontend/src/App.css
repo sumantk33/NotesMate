@@ -176,7 +176,8 @@
 }
 
 .post Button {
-  width: 8vh;
+  width: 2.7rem;
+  margin-left: 0.5rem;
 }
 
 .postFooter {

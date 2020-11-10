@@ -1,7 +1,18 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Card, Button } from "react-bootstrap";
+import { deletePost } from "../actions/discussActions";
 
-const post = ({ post }) => {
+const Post = ({ post }) => {
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const deleteHandler = () => {
+    dispatch(deletePost(post._id));
+  };
+
   return (
     <div>
       <Card className='post'>
@@ -13,13 +24,21 @@ const post = ({ post }) => {
           <h6>
             Asked by {post.userName} on {post.createdAt}
           </h6>
-          <Button variant='primary'>
-            <i className='fa fa-reply'></i>
-          </Button>
+
+          <div className='icons'>
+            {userInfo && post.user === userInfo._id && (
+              <Button variant='danger' onClick={deleteHandler}>
+                <i className='fa fa-trash'></i>
+              </Button>
+            )}
+            <Button variant='primary'>
+              <i className='fa fa-reply'></i>
+            </Button>
+          </div>
         </Card.Footer>
       </Card>
     </div>
   );
 };
 
-export default post;
+export default Post;

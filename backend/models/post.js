@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 
 const postSchema = mongoose.Schema({
-  userName: {
-    type: String,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
     required: true,
+    ref: "User",
   },
   createdAt: {
     type: String,
@@ -23,9 +24,10 @@ const postSchema = mongoose.Schema({
   },
   replies: [
     {
-      replyUserName: {
-        type: String,
+      replyUser: {
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
+        ref: "User",
       },
       replyCreatedAt: {
         type: String,

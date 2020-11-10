@@ -12,3 +12,19 @@
   text-align: center;
   color: #636363;
 }
+
+.add {
+  position: fixed;
+  right: 5vh;
+  bottom: 5vh;
+  background-color: #5952c0;
+  border: none;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+.add:hover {
+  background-color: red;
+}
