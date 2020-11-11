@@ -29,8 +29,12 @@ const DiscussScreen = ({ match, history }) => {
   }, [dispatch, match, successAdd, successDelete]);
 
   const replyHandler = () => {
-    dispatch(addReply(description, match.params.postId));
-    setDescription("");
+    if (!description) {
+      alert("Please enter description");
+    } else {
+      dispatch(addReply(description, match.params.postId));
+      setDescription("");
+    }
   };
 
   return (

@@ -132,7 +132,7 @@ router.delete("/reply/:postId/:replyId", protect, async (req, res) => {
     var updatedReplies = replies.filter(
       (reply) =>
         String(reply._id) !== String(req.params.replyId) &&
-        String(req.user._id) === String(reply.replyUser._id)
+        String(req.user._id) !== String(reply.replyUser._id)
     );
 
     const result = await Post.findByIdAndUpdate(

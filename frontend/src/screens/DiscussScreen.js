@@ -25,6 +25,9 @@ const DiscussScreen = () => {
   const postDelete = useSelector((state) => state.postDelete);
   const { loading: loadingDelete, success: successDelete } = postDelete;
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch, successDelete, successAdd]);
@@ -52,9 +55,11 @@ const DiscussScreen = () => {
           posts.map((post) => <Post key={post._id} post={post} />)
         )}
       </Container>
-      <Button className='add' onClick={handleShow}>
-        <i className='fa fa-plus plus' aria-hidden='true'></i>
-      </Button>
+      {userInfo && (
+        <Button className='add' onClick={handleShow}>
+          <i className='fa fa-plus plus' aria-hidden='true'></i>
+        </Button>
+      )}
 
       <Modal
         show={show}
