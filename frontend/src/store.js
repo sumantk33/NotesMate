@@ -8,7 +8,14 @@ import {
 } from "./reducers/BranchReducers";
 import { subjectListReducer } from "./reducers/SubjectsReducer";
 import { notesListReducer } from "./reducers/NotesReducers";
-import { postListReducer, postDeleteReducer } from "./reducers/DiscussReducers";
+import {
+  postListReducer,
+  postDeleteReducer,
+  postAddReducer,
+  postSingleReducer,
+  replyAddReducer,
+  replyDeleteReducer,
+} from "./reducers/DiscussReducers";
 import { userLoginReducer, userRegisterReducer } from "./reducers/userReducers";
 
 const reducer = combineReducers({
@@ -16,10 +23,14 @@ const reducer = combineReducers({
   branchDetails: branchDetailsReducer,
   subjectList: subjectListReducer,
   notesList: notesListReducer,
-  postList: postListReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
+  postList: postListReducer,
   postDelete: postDeleteReducer,
+  postAdd: postAddReducer,
+  postSingle: postSingleReducer,
+  replyAdd: replyAddReducer,
+  replyDelete: replyDeleteReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

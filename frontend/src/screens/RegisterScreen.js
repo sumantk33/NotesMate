@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { register } from "../actions/userActions";
+import "./css/RegisterScreen.css";
 
 const RegisterScreen = ({ history }) => {
   const [name, setName] = useState("");
@@ -37,11 +38,11 @@ const RegisterScreen = ({ history }) => {
     <Container>
       <Row className='justify-content-md-center'>
         <Col xs={12} md={6}>
-          <h1>Sign Up</h1>
+          <h1 className='registerH1'>Sign In</h1>
           {error && <Message variant='danger'>{error}</Message>}
           {message && <Message variant='danger'>{message}</Message>}
           {loading && <Loader />}
-          <Form onSubmit={submitHandler}>
+          <Form onSubmit={submitHandler} className='registerForm'>
             <Form.Group controlId='name'>
               <Form.Label>Name</Form.Label>
               <Form.Control
@@ -82,19 +83,17 @@ const RegisterScreen = ({ history }) => {
               />
             </Form.Group>
 
-            <div className='text-center'>
+            <div className='text-center bottomBar'>
               <Button type='submit' variant='primary'>
                 Register
               </Button>
+              <Row className='py-3'>
+                <Col>
+                  Have an account? <Link to='/login'>Login</Link> here
+                </Col>
+              </Row>
             </div>
           </Form>
-          <div className='text-center'>
-            <Row className='py-3'>
-              <Col>
-                Have an account? <Link to='/login'>Login</Link>
-              </Col>
-            </Row>
-          </div>
         </Col>
       </Row>
     </Container>

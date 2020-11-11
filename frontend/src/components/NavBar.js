@@ -16,7 +16,7 @@ const NavBar = () => {
   };
 
   return (
-    <Navbar expand='lg' className='navBarHeader bg-transparent'>
+    <Navbar expand='lg' className='navBarHeader'>
       <Navbar.Brand>
         <Link to='/'>
           <img src={header} alt='Header'></img>

@@ -17,14 +17,13 @@
   font-family: "Fira Sans", sans-serif;
   width: 100%;
   margin: auto;
-  background: transparent;
   height: 7vh;
 }
 
 .nav_items {
   color: black;
-  margin-right: 3vh;
-  font-size: 1.1rem;
+  margin-right: 1rem;
+  font-size: 1rem;
 }
 
 .nav_items:hover {
@@ -144,7 +143,7 @@
 
 .reading {
   width: 45vh;
-  position: absolute;
+  position: fixed;
   left: 60%;
   top: 60%;
   transform: translate(60%, 0%);
@@ -152,7 +151,7 @@
 }
 
 .rocket {
-  position: absolute;
+  position: fixed;
   left: 3%;
   top: 30%;
   width: 55vh;
@@ -173,6 +172,8 @@
 
 .post {
   margin-bottom: 2vh;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06);
 }
 
 .post Button {
@@ -184,6 +185,11 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.reply {
+  margin-top: 2rem;
+  font-family: "Poppins", sans-serif;
 }
 
 @media screen and (max-width: 1400px) {

@@ -10,9 +10,24 @@ const Post = require("../models/post");
 // @access  Public
 router.get("/", async (req, res) => {
   try {
-    const posts = await Post.find().sort("-sortingDate");
+    const posts = await Post.find().sort("-sortingDate").populate("user");
 
     res.json(posts);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// @desc    Get a post by ID
+// @route   GET /api/discuss/:id
+// @access  Public
+router.get("/:id", async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id).populate(
+      "user replies.replyUser"
+    );
+
+    res.json(post);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -35,6 +50,28 @@ router.post("/", protect, async (req, res) => {
 
     const result = await newPost.save();
     res.json(result);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// @desc    Delete a post
+// @route   DELETE /api/discuss/:id
+// @access  Public
+router.delete("/:id", protect, async (req, res) => {
+  try {
+    const exists = await Post.findById(req.params.id);
+
+    if (!exists) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    if (String(exists.user._id) === String(req.user._id)) {
+      await Post.findByIdAndRemove(req.params.id);
+      res.json({ message: "Deleted post successfully" });
+    } else {
+      res.status(400).json({ message: "The post dosen't belong to this user" });
+    }
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -77,60 +114,36 @@ router.post("/:id", protect, async (req, res) => {
   }
 });
 
-// @desc    Delete a post
-// @route   DELETE /api/discuss/:id
-// @access  Public
-router.delete("/:id", protect, async (req, res) => {
-  try {
-    const exists = await Post.findById(req.params.id);
-
-    if (!exists) {
-      return res.status(404).json({ message: "Post not found" });
-    }
-
-    if (String(exists.user._id) === String(req.user._id)) {
-      await Post.findByIdAndRemove(req.params.id);
-      res.json({ message: "Deleted post successfully" });
-    } else {
-      res.status(400).json({ message: "The post dosen't belong to this user" });
-    }
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
 // @desc    Delete a reply
 // @route   DELETE /api/discuss/reply/:id
 // @access  Public
 router.delete("/reply/:postId/:replyId", protect, async (req, res) => {
   try {
-    const post = await Post.findById(req.params.postId);
+    const post = await Post.findById(req.params.postId).populate(
+      "user replies.replyUser"
+    );
 
     if (!post) {
       return res.status(404).json({ message: "Post dosen't exist" });
     }
 
-    if (String(post.user._id) === String(req.user._id)) {
-      const { replies } = post;
+    const { replies } = post;
 
-      var updatedReplies = replies.filter(
-        (reply) => String(reply._id) !== String(req.params.replyId)
-      );
+    var updatedReplies = replies.filter(
+      (reply) =>
+        String(reply._id) !== String(req.params.replyId) &&
+        String(req.user._id) === String(reply.replyUser._id)
+    );
 
-      const result = await Post.findByIdAndUpdate(
-        req.params.postId,
-        {
-          $set: { replies: updatedReplies },
-        },
-        { new: true }
-      );
+    const result = await Post.findByIdAndUpdate(
+      req.params.postId,
+      {
+        $set: { replies: updatedReplies },
+      },
+      { new: true }
+    );
 
-      res.json(result);
-    } else {
-      res
-        .status(400)
-        .json({ message: "The reply dosen't belong to this user" });
-    }
+    res.json(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

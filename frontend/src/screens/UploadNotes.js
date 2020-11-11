@@ -33,10 +33,8 @@ const ContactScreen = () => {
         "Content-Type": "application/json",
       };
 
-      const url = "http://localhost:5000/api/upload/add";
-
       try {
-        const { status } = await axios.post(url, data, config);
+        const { status } = await axios.post("/api/upload/add", data, config);
 
         if (status === 201) {
           setVariant("success");
@@ -67,7 +65,8 @@ const ContactScreen = () => {
         style={{
           position: "absolute",
           top: 0,
-          right: 0,
+          left: "50%",
+          transform: "translate(-50%, 0)",
         }}
       >
         <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>

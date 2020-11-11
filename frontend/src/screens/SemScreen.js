@@ -26,7 +26,7 @@ const SemScreen = ({ match }) => {
       <div className='semester'>
         <h1>Subjects</h1>
         {subjects.length === 0 ? (
-          <Empty />
+          <Empty message={`No subjects found`} />
         ) : (
           <Container>
             <img src={Reading} alt='Reading' className='reading' />

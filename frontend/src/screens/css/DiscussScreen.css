@@ -19,12 +19,23 @@
   bottom: 5vh;
   background-color: #5952c0;
   border: none;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   transition: 0.4s;
 }
 
 .add:hover {
   background-color: red;
+}
+
+.askButton {
+  width: 5rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .add {
+    width: 3rem;
+    height: 3rem;
+  }
 }

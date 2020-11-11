@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+.login {
+  margin-bottom: 10px;
+  min-height: 75vh;
+  margin-top: 4vh;
+}
+
+.loginH1 {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  font-size: 7vh;
+  color: #5952c0;
+}
+
+.loginForm {
+  font-family: "Poppins", sans-serif;
+}
+
+.loginForm Label {
+  font-size: 1.1rem;
+}
+
+.bottomBar {
+  margin-top: 3rem;
+}
+
+.signInButton {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
