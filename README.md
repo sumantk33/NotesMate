@@ -9,7 +9,20 @@ Website for college students community to share notes and have discussions about
 - User can add notes which will be verified by the admin.
 - Admin contact for query
 
-## Installing
+## Usage
+
+### Env Variables
+
+Create a .env file in the root and add the following
+
+```
+PORT = 5000
+NODE_ENV = development
+MONGO_URI = your MongoDB URI
+JWT_SECRET = notesmate
+```
+
+### Installing
 
 Clone the repository into your device and install dependancies using the following commands.
 
@@ -17,9 +30,7 @@ Clone the repository into your device and install dependancies using the followi
 npm install
 ```
 
-> Put the URI of your MongoDB database in a .env which should be created in root directory.
-
-## Running the application
+### Running the application
 
 To run React and express:-
 
