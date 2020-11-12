@@ -16,13 +16,12 @@ const NavBar = () => {
   };
 
   return (
-    <Navbar expand='lg' className='navBarHeader'>
+    <Navbar bg='light' expand='lg' className='navBar'>
       <Navbar.Brand>
         <Link to='/'>
           <img src={header} alt='Header'></img>
         </Link>
       </Navbar.Brand>
-
       <Navbar.Toggle aria-controls='basic-navbar-nav' />
       <Navbar.Collapse id='basic-navbar-nav'>
         <Nav className='ml-auto nav_links'>

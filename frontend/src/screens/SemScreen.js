@@ -8,6 +8,7 @@ import { getSubjects } from "../actions/subjectActions";
 import Loader from "../components/Loader";
 import Reading from "../assets/reading.svg";
 import Empty from "../components/Empty";
+import BreadCrumb from "../components/BreadCrumb";
 
 const SemScreen = ({ match }) => {
   const dispatch = useDispatch();
@@ -24,6 +25,9 @@ const SemScreen = ({ match }) => {
   } else {
     return (
       <div className='semester'>
+        <Container>
+          <BreadCrumb branch={match.params.dept} sem={match.params.sem} />
+        </Container>
         <h1>Subjects</h1>
         {subjects.length === 0 ? (
           <Empty message={`No subjects found`} />

@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import { getCurrent } from "../actions/branchActions";
 import Reading from "../assets/reading.svg";
 import Rocket from "../assets/rocket.svg";
+import BreadCrumb from "../components/BreadCrumb";
 
 const BranchScreen = ({ match }) => {
   const dispatch = useDispatch();
@@ -25,10 +26,13 @@ const BranchScreen = ({ match }) => {
     return <Loader />;
   } else {
     return (
-      <div className='branch'>
+      <div>
         <img src={Reading} alt='Reading' className='reading' />
         <img src={Rocket} alt='Rocket' className='rocket' />
-        <Container>
+        <Container className='bread'>
+          <BreadCrumb branch={match.params.dept} />
+        </Container>
+        <Container className='branch'>
           <h1>{currBranch.description}</h1>
 
           <Row>

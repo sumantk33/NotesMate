@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./css/DiscussScreen.css";
 import { Container, Modal, Button, Form } from "react-bootstrap";
@@ -55,11 +56,10 @@ const DiscussScreen = () => {
           posts.map((post) => <Post key={post._id} post={post} />)
         )}
       </Container>
-      {userInfo && (
-        <Button className='add' onClick={handleShow}>
-          <i className='fa fa-plus plus' aria-hidden='true'></i>
-        </Button>
-      )}
+
+      <Button className='add' onClick={handleShow}>
+        <i className='fa fa-plus plus' aria-hidden='true'></i>
+      </Button>
 
       <Modal
         show={show}
@@ -72,35 +72,44 @@ const DiscussScreen = () => {
           <Modal.Title>Ask your question</Modal.Title>
         </Modal.Header>
 
-        <Modal.Body>
-          <Form.Group controlId='exampleForm.ControlInput1'>
-            <Form.Label>Title:-</Form.Label>
-            <Form.Control
-              type='text'
-              placeholder='Header of your question'
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group controlId='exampleForm.ControlTextarea1'>
-            <Form.Label>Description</Form.Label>
-            <Form.Control
-              as='textarea'
-              rows={3}
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </Form.Group>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button
-            variant='secondary'
-            className='askButton'
-            onClick={submitHandler}
-          >
-            Ask
-          </Button>
-        </Modal.Footer>
+        {!userInfo ? (
+          <h5 className='loginAlert'>
+            You must be logged in to post. You can <Link to='/'>login</Link>{" "}
+            here.
+          </h5>
+        ) : (
+          <>
+            <Modal.Body>
+              <Form.Group controlId='exampleForm.ControlInput1'>
+                <Form.Label>Title:-</Form.Label>
+                <Form.Control
+                  type='text'
+                  placeholder='Header of your question'
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group controlId='exampleForm.ControlTextarea1'>
+                <Form.Label>Description</Form.Label>
+                <Form.Control
+                  as='textarea'
+                  rows={3}
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </Form.Group>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                variant='secondary'
+                className='askButton'
+                onClick={submitHandler}
+              >
+                Ask
+              </Button>
+            </Modal.Footer>
+          </>
+        )}
       </Modal>
     </div>
   );

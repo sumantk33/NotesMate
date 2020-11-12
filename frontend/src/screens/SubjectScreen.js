@@ -6,6 +6,7 @@ import "./css/SubjectScreen.css";
 import { getNotes } from "../actions/notesAction";
 import Loader from "../components/Loader";
 import Reading from "../assets/reading.svg";
+import BreadCrumb from "../components/BreadCrumb";
 
 const SemScreen = ({ match }) => {
   const dispatch = useDispatch();
@@ -27,6 +28,11 @@ const SemScreen = ({ match }) => {
         <img src={Reading} alt='Reading' className='reading' />
 
         <Container>
+          <BreadCrumb
+            branch={match.params.dept}
+            sem={match.params.sem}
+            subject={match.params.sub_code}
+          />
           <h1>Notes</h1>
           <h4>
             {match.params.dept} Sem {match.params.sem} {match.params.sub_code}{" "}
@@ -56,7 +62,6 @@ const SemScreen = ({ match }) => {
                   <td>{note.sub_code}</td>
                   <td>
                     <a
-                      // style={{ display: "table-cell" }}
                       href={note.link}
                       target='_blank'
                       rel='noopener noreferrer'
