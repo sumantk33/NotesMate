@@ -2,6 +2,10 @@
 
 Website for college students community to share notes and have discussions about college activities.
 
+## Deployment
+
+You can find the deployed website [here](https://notesmatee.herokuapp.com/)
+
 ## Features
 
 - Notes of all branches which can be downloaded
@@ -19,7 +23,7 @@ Create a .env file in the root and add the following
 PORT = 5000
 NODE_ENV = development
 MONGO_URI = your MongoDB URI
-JWT_SECRET = notesmate
+JWT_SECRET = add your own JWT secret
 ```
 
 ### Installing
