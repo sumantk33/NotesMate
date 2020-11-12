@@ -28,6 +28,8 @@ Clone the repository into your device and install dependancies using the followi
 
 ```bash
 npm install
+cd frontend
+npm install
 ```
 
 ### Running the application

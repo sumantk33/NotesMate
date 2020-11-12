@@ -39,7 +39,7 @@ const DiscussScreen = ({ match, history }) => {
 
   return (
     <div className='reply'>
-      {loading ? (
+      {loading || loadingAdd ? (
         <Loader />
       ) : (
         <Container>

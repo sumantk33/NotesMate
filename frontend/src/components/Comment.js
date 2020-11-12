@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Button } from "react-bootstrap";
 import { deleteReply } from "../actions/discussActions";
@@ -11,8 +10,6 @@ const Comment = ({ postId, reply, match }) => {
   const { userInfo } = userLogin;
 
   const deleteHandler = () => {
-    // console.log(postId);
-    // console.log(reply._id);
     dispatch(deleteReply(postId, reply._id));
   };
 

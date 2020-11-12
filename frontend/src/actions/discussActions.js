@@ -178,7 +178,7 @@ export const addReply = (description, postId) => async (dispatch, getState) => {
     });
   } catch (error) {
     dispatch({
-      type: POST_DELETE_FAIL,
+      type: REPLY_ADD_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
