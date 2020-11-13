@@ -44,3 +44,9 @@
     height: 3rem;
   }
 }
+
+@media screen and (max-width: 900px) {
+  .discuss h1 {
+    font-size: 5vh;
+  }
+}

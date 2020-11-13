@@ -191,6 +191,16 @@
   }
 }
 
+@media screen and (max-width: 900px) {
+  .navBar img {
+    margin-left: 0vh;
+    height: 4vh;
+    width: 15vh;
+  }
+  .hero h1 {
+    font-size: 10vh;
+  }
+}
 @media screen and (max-width: 700px) {
   .rocket {
     opacity: 0;
@@ -198,5 +208,8 @@
 
   .reading {
     opacity: 0;
+  }
+  .hero h1 {
+    font-size: 8vh;
   }
 }

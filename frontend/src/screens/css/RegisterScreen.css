@@ -31,3 +31,9 @@
   margin-top: 0.5rem;
   margin-bottom: 1rem;
 }
+
+@media screen and (max-width: 900px) {
+  .registerH1 {
+    font-size: 5vh;
+  }
+}

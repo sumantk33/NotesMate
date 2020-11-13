@@ -32,3 +32,9 @@
   margin: auto;
   border-radius: 7px;
 }
+
+@media screen and (max-width: 900px) {
+  .branch h1 {
+    font-size: 4vh;
+  }
+}

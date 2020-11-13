@@ -38,3 +38,9 @@
   border: 2px solid #0620ff;
   transform: translateY(-3px);
 }
+
+@media screen and (max-width: 900px) {
+  .contact h1 {
+    font-size: 5vh;
+  }
+}
