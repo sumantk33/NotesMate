@@ -35,3 +35,12 @@
   height: 5%;
   margin-left: 1%;
 }
+
+@media screen and (max-width: 900px) {
+  .commentInput {
+    width: 75%;
+  }
+  .commentButton {
+    width: 20%;
+  }
+}

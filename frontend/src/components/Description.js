@@ -10,11 +10,11 @@ const Description = () => {
         You can get all your notes in just one place without hassle.
         <br /> We also host a discussion forum where all your queries can be
         solved
-        <br /> by the students of your college community(Coming soon).
+        <br /> by the students of your college community.
       </h5>
-      <Link to='/about'>
+      <Link to='/discuss'>
         <Button variant='outline-primary' size='lg' className='learnMore'>
-          <span style={{ fontSize: "20px" }}>Learn More </span>
+          <span style={{ fontSize: "20px" }}>Checkout </span>
           <i className='fa fa-long-arrow-right' aria-hidden='true'></i>
         </Button>
       </Link>

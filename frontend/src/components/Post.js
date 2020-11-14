@@ -22,7 +22,7 @@ const Post = ({ post }) => {
           <Card.Text>{post.description}</Card.Text>
         </Card.Body>
         <Card.Footer className='text-muted postFooter'>
-          <h6>
+          <h6 className='askedBy'>
             Asked by {post.user.name} on {post.createdAt}
           </h6>
 

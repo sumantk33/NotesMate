@@ -7,6 +7,7 @@ const Loader = () => {
       <img
         src={loader}
         alt='Loading'
+        className='loader'
         style={{ width: "300px", margin: "auto", display: "block" }}
       />
     </>

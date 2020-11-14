@@ -209,6 +209,23 @@
   .branchCard h6 {
     font-size: 2.5vh;
   }
+  .desc h1 {
+    font-size: 5vh;
+  }
+  .desc h5 {
+    font-size: 2.3vh;
+  }
+  .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
 }
 @media screen and (max-width: 700px) {
   .rocket {
