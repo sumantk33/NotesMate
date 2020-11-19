@@ -58,6 +58,7 @@ npm run server
 
 ## Built With
 
-- [React](https://reactjs.org/docs/getting-started.html/) - The JavaScript library used for Front-End
-- [Express](https://expressjs.com/en/starter/installing.html/) - NodeJs web application framework for API
 - [MongoDB](https://www.mongodb.com//) - Database used to store the info
+- [Express](https://expressjs.com/en/starter/installing.html/) - NodeJs web application framework for API
+- [React](https://reactjs.org/docs/getting-started.html/) - The JavaScript library used for Front-End
+- [Node.js](https://nodejs.org/en/) - JavaScript runtime environment
