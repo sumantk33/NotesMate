@@ -261,4 +261,14 @@
   .hero h1 {
     font-size: 8vh;
   }
+  .notesBody {
+    flex-direction: column;
+  }
+  .buttons {
+    flex-direction: row;
+    justify-content: safe;
+  }
+  .notes Button {
+    margin-left: 1rem;
+  }
 }
