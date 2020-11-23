@@ -45,7 +45,7 @@ router.post("/add", async (req, res) => {
 // @desc    Approve notes
 // @route   get /api/upload/approve/:id
 // @access  Public
-router.get("/approve/:id", protect, async (req, res) => {
+router.get("/approve/:id", async (req, res) => {
   try {
     const exists = await Upload.findById(req.params.id).select("-_id -__v");
 
@@ -74,6 +74,25 @@ router.get("/approve/:id", protect, async (req, res) => {
 
     // const result = await newNotes.save();
     res.status(201).json(result);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+});
+
+// @desc    Delete a pending note
+// @route   DELETE /api/upload/delete/:id
+// @access  Public
+router.delete("/delete/:id", async (req, res) => {
+  try {
+    const exists = await Upload.findById(req.params.id);
+
+    if (!exists) {
+      return res.status(404).json({ message: "Note dosen't exist" });
+    }
+
+    await Upload.findByIdAndRemove(req.params.id);
+
+    res.status(200).json({ message: "Deleted successfully" });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }

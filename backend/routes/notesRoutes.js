@@ -56,7 +56,7 @@ router.get("/:id", async (req, res) => {
 
 // @desc    Add notes
 // @route   POST /api/notes
-// @access  Private
+// @access  Public
 router.post("/", async (req, res) => {
   const { department, sem, name, subject, link, sub_code } = req.body;
 
@@ -79,7 +79,7 @@ router.post("/", async (req, res) => {
 
 // @desc    Update notes
 // @route   PUT /api/notes/:id
-// @access  Private
+// @access  Public
 router.put("/:id", async (req, res) => {
   try {
     let exists = await Notes.findById(req.params.id);

@@ -3,7 +3,6 @@ import {
   ISSUES_LIST_REQUEST,
   ISSUES_LIST_SUCCESS,
   ISSUES_DELETE_FAIL,
-  ISSUES_DELETE_REQUEST,
   ISSUES_DELETE_SUCCESS,
 } from "../constants/issuesConstants";
 
@@ -15,8 +14,6 @@ export const issuesListReducer = (state = { issues: [] }, action) => {
       return { loading: false, issues: action.payload };
     case ISSUES_LIST_FAIL:
       return { loading: false, error: action.payload };
-    // case ISSUES_DELETE_REQUEST:
-    //   return { ...state, loading: true };
     case ISSUES_DELETE_SUCCESS:
       return {
         ...state,

@@ -7,7 +7,10 @@ import {
   branchDetailsReducer,
 } from "./reducers/BranchReducers";
 import { subjectListReducer } from "./reducers/SubjectsReducer";
-import { notesListReducer } from "./reducers/NotesReducers";
+import {
+  notesListReducer,
+  pendingNotesListRedcuer,
+} from "./reducers/NotesReducers";
 import {
   postListReducer,
   postDeleteReducer,
@@ -33,6 +36,7 @@ const reducer = combineReducers({
   replyAdd: replyAddReducer,
   replyDelete: replyDeleteReducer,
   issuesList: issuesListReducer,
+  pendingNotesList: pendingNotesListRedcuer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

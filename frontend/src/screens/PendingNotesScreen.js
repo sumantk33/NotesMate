@@ -3,41 +3,41 @@ import { useDispatch, useSelector } from "react-redux";
 import "./css/DiscussScreen.css";
 import { Container } from "react-bootstrap";
 import Loader from "../components/Loader";
-import { getIssues } from "../actions/issuesActions";
 import Empty from "../components/Empty";
-import IssueCard from "../components/IssueCard";
+import PendingNotes from "../components/PendingNotes";
+import { getPendingNotes } from "../actions/notesAction";
 
-const IssuesScreen = ({ history }) => {
+const PendingNotesScreen = ({ history }) => {
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  const issuesList = useSelector((state) => state.issuesList);
-  const { loading, issues } = issuesList;
+  const pendingNotesList = useSelector((state) => state.pendingNotesList);
+  const { loading, notes } = pendingNotesList;
 
   useEffect(() => {
     if (!userInfo || !userInfo.isAdmin) {
       history.push("/login");
     } else {
-      dispatch(getIssues());
+      dispatch(getPendingNotes());
     }
   }, [userInfo, history, dispatch]);
 
   return (
     <div className='discuss'>
       <Container>
-        <h1>Issues</h1>
+        <h1>Approve Notes</h1>
         {loading ? (
           <Loader />
-        ) : issues.length === 0 ? (
-          <Empty message='No issues posted' />
+        ) : notes.length === 0 ? (
+          <Empty message='No pending notes to approve' />
         ) : (
-          issues.map((issue) => <IssueCard issue={issue} />)
+          notes.map((note) => <PendingNotes note={note} />)
         )}
       </Container>
     </div>
   );
 };
 
-export default IssuesScreen;
+export default PendingNotesScreen;

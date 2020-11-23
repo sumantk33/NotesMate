@@ -14,6 +14,7 @@ import ReplyScreen from "./screens/ReplyScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import IssuesScreen from "./screens/IssuesScreen";
+import PendingNotesScreen from "./screens/PendingNotesScreen";
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
       <Route exact path='/login' component={LoginScreen} />
       <Route exact path='/register' component={RegisterScreen} />
       <Route exact path='/admin/issues' component={IssuesScreen} />
+      <Route exact path='/admin/approveNotes' component={PendingNotesScreen} />
     </Router>
   );
 };
