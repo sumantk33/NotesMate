@@ -17,6 +17,7 @@ import {
   replyDeleteReducer,
 } from "./reducers/DiscussReducers";
 import { userLoginReducer, userRegisterReducer } from "./reducers/userReducers";
+import { issuesListReducer } from "./reducers/issuesReducers";
 
 const reducer = combineReducers({
   branchList: branchListReducer,
@@ -31,6 +32,7 @@ const reducer = combineReducers({
   postSingle: postSingleReducer,
   replyAdd: replyAddReducer,
   replyDelete: replyDeleteReducer,
+  issuesList: issuesListReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

@@ -13,6 +13,7 @@ import DiscussScreen from "./screens/DiscussScreen";
 import ReplyScreen from "./screens/ReplyScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+import IssuesScreen from "./screens/IssuesScreen";
 
 const App = () => {
   return (
@@ -33,6 +34,7 @@ const App = () => {
       <Route exact path='/discuss/:postId' component={ReplyScreen} />
       <Route exact path='/login' component={LoginScreen} />
       <Route exact path='/register' component={RegisterScreen} />
+      <Route exact path='/admin/issues' component={IssuesScreen} />
     </Router>
   );
 };

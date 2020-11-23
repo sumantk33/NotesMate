@@ -28,7 +28,7 @@ const LoginScreen = ({ history }) => {
   };
 
   return (
-    <div classname='login'>
+    <div className='login'>
       <Container>
         <Row className='justify-content-md-center'>
           <Col xs={12} md={6}>
@@ -53,7 +53,7 @@ const LoginScreen = ({ history }) => {
                   placeholder='Enter password'
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  autocomplete='new-password'
+                  autoComplete='new-password'
                 />
               </Form.Group>
 

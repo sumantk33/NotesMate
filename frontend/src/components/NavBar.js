@@ -39,6 +39,11 @@ const NavBar = () => {
           </Nav.Link>
           {userInfo ? (
             <NavDropdown title={userInfo.name}>
+              {userInfo.isAdmin && (
+                <Nav.Link href='/admin/issues'>
+                  <span className='nav_items'>Issues</span>
+                </Nav.Link>
+              )}
               <Nav.Link onClick={logoutHandler}>
                 <span className='nav_items'>Logout</span>
               </Nav.Link>
