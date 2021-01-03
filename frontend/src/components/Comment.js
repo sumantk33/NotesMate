@@ -14,20 +14,22 @@ const Comment = ({ postId, reply, match }) => {
   };
 
   return (
-    <Card className='comment'>
+    <Card className="comment">
       <Card.Body>
-        <div className='info'>
+        <div className="info">
           <Card.Text>{reply.replyDescription}</Card.Text>
-          <span className='commentFooter'>
+          <span className="commentFooter">
             Comment by {reply.replyUser.name} on {reply.replyCreatedAt}
+            {userInfo && reply.replyUser._id === userInfo._id && (
+              <Button
+                variant="danger"
+                onClick={deleteHandler}
+                className="btn-sm"
+              >
+                <i className="fa fa-trash"></i>
+              </Button>
+            )}
           </span>
-        </div>
-        <div className='deleteIcon'>
-          {userInfo && reply.replyUser._id === userInfo._id && (
-            <Button variant='danger' onClick={deleteHandler}>
-              <i className='fa fa-trash'></i>
-            </Button>
-          )}
         </div>
       </Card.Body>
     </Card>
