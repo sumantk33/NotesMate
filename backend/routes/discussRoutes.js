@@ -43,17 +43,19 @@ router.get("/:id", async (req, res) => {
       }
     }
 
-    await Post.findByIdAndUpdate(
-      req.params.id,
-      {
-        $set: { replies: updatedReplies },
-      },
-      { new: true }
-    );
+    if (updatedReplies) {
+      await Post.findByIdAndUpdate(
+        req.params.id,
+        {
+          $set: { replies: updatedReplies },
+        },
+        { new: true }
+      );
 
-    post = await Post.findById(req.params.id).populate(
-      "user replies.replyUser"
-    );
+      post = await Post.findById(req.params.id).populate(
+        "user replies.replyUser"
+      );
+    }
 
     res.json(post);
   } catch (error) {
