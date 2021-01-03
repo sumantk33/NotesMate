@@ -10,8 +10,16 @@ const Post = require("../models/post");
 // @access  Public
 router.get("/", async (req, res) => {
   try {
-    const posts = await Post.find().sort("-sortingDate").populate("user");
+    var posts = await Post.find().sort("-sortingDate").populate("user");
 
+    // Remove Posts whose user accounts have been deleted
+    for (var i = 0; i < posts.length; i++) {
+      if (!posts[i].user) {
+        await Post.findByIdAndRemove(posts[i]._id);
+      }
+    }
+
+    posts = await Post.find().sort("-sortingDate").populate("user");
     res.json(posts);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -23,7 +31,27 @@ router.get("/", async (req, res) => {
 // @access  Public
 router.get("/:id", async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id).populate(
+    var post = await Post.findById(req.params.id).populate(
+      "user replies.replyUser"
+    );
+
+    var replies = post.replies;
+    var updatedReplies = [];
+    for (var i = 0; i < replies.length; i++) {
+      if (replies[i].replyUser) {
+        updatedReplies.push(replies[i]);
+      }
+    }
+
+    await Post.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: { replies: updatedReplies },
+      },
+      { new: true }
+    );
+
+    post = await Post.findById(req.params.id).populate(
       "user replies.replyUser"
     );
 
